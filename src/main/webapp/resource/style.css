@@ -1,0 +1,31 @@
+* {font-size: 20px;}
+h1 { font-size:30px; font-weight:bold; margin:10px 0; }
+textarea { width:740px; height:60px; border:1px solid #c0c0c0; background-color:#ffe4c4; padding:5px; }
+.flat ul { margin-top:10px; margin-bottom:10px; }
+.flat ul li { list-style:none; float:left; padding-right:30px; margin-bottom:10px; }
+.clear { clear:both; }
+table { table-layout:fixed; border-collapse:collapse; border-top: 1px solid gray; border-left: 1px solid gray; border-spacing: 0; margin: 10px 0; }
+.even { background-color: #ececec; }
+.over { background-color: #ffdab9; }
+td, th { word-break:break-all; word-wrap:break-word; border-bottom: 1px solid gray; border-right: 1px solid gray; padding: 5px 5px; }
+th {background-color:#e0e0e0;}
+.row {width:30px;border:none;height:22px;text-align:center;padding:2px;font-family:"courier new";}
+input.input, select.input {width:290px;border: 1px solid #c0c0c0;padding:3px;font-family:"courier new";}
+select.input { height:30px; }
+textarea.input { background-color:#ffffff; }
+.width75 {width: 750px;}
+.width70 {width: 700px;}
+.width65 {width: 650px;}
+.width60 {width: 600px;}
+.width55 {width: 550px;}
+.width50 {width: 500px;}
+.width45 {width: 450px;}
+.width40 {width: 400px;}
+.width35 {width: 350px;}
+.width30 {width: 300px;}
+.width25 {width: 250px;}
+.width20 {width: 200px;}
+.width15 {width: 150px;}
+.width10 {width: 100px;}
+.width5 {width: 50px;}
+.btn {width:50px}
