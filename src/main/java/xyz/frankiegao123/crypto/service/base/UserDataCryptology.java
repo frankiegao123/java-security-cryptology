@@ -18,9 +18,9 @@ public class UserDataCryptology {
     public UserDataCryptology(UserData ud) {
         this.ud = ud;
     }
-    
+
     /**
-     * <p>��ȡ�㷨��</p>
+     * 截取算法名
      *
      * @param algorithm
      * @return
@@ -34,9 +34,9 @@ public class UserDataCryptology {
         }
         return alg.substring(0, slash);
     }
-    
+
     /**
-     * <p>��ȡ�ǶԳƼ��ܵ���Կ</p>
+     * 获取非对称加密的密钥
      *
      * @param algorithm
      * @return
@@ -44,28 +44,28 @@ public class UserDataCryptology {
      */
     protected Key getAsymmetricalKey(String algorithm) throws Exception {
         if(ud.getKey().isEmpty()) {
-            // û����д��Կʱ�������㷨����Կ�淶���������Կ
+            // 没有填写密钥时，根据算法的密钥规范随机生成密钥
             KeyPairGenerator gen = KeyPairGenerator.getInstance(algorithm);
             if(ud.getKeysize() > 0) {
-                // ��д��Կ����ʱ��������Կ����
+                // 填写密钥长度时，设置密钥长度
                 gen.initialize(ud.getKeysize());
             }
-            // ������Կ��
+            // 生成密钥对
             this.keyPair = gen.generateKeyPair();
-            
-            // ȷ��ʹ�ù�Կ����˽Կ
+
+            // 确认使用公钥还是私钥
             return ud.usingPublicKey() ? keyPair.getPublic() : keyPair.getPrivate();
         } else {
-            // �����д����Կ��������Կ�ֽڰ�װ Key ����
-            // ��Կ���� X509EncodedKeySpec
-            // ˽Կ���� PKCS8EncodedKeySpec
+            // 如果填写了密钥，根据密钥字节包装 Key 对象
+            // 公钥采用 X509EncodedKeySpec
+            // 私钥采用 PKCS8EncodedKeySpec
             KeySpecWrap wrap = ud.usingPublicKey() ? KeySpecWrap.X509 : KeySpecWrap.PKCS8;
             return wrap.getKey(ud.getKey(), algorithm);
         }
     }
-    
+
     /**
-     * <p>��ȡ����ǩ������Կ</p>
+     * 获取数字签名的密钥
      *
      * @param algorithm
      * @return
@@ -84,9 +84,9 @@ public class UserDataCryptology {
             return wrap.getKey(ud.getKey(), algorithm);
         }
     }
-    
+
     /**
-     * <p>��ȡ�ԳƼ��ܵ���Կ</p>
+     * 获取对称加密的密钥
      *
      * @param algorithm
      * @return
